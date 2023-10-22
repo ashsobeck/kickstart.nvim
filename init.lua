@@ -290,6 +290,12 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
+-- Get back to NetRW
+vim.keymap.set({'n'}, '<leader>pv', vim.cmd.Ex)
+
+-- Git keymaps
+vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
