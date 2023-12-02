@@ -188,6 +188,14 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            path = 3
+          }
+        }
+      }
     },
   },
 
@@ -236,7 +244,7 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  require 'kickstart.plugins.autoformat',
+  -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -475,7 +483,7 @@ local on_attach = function(client, bufnr)
 
   -- Create a command `:Format` local to the LSP buffer
   -- As well as create a binding
-  nmap('<leader>f', vim.lsp.buf.format(), '[F]ormat current buffer')
+  -- nmap('<leader>f', vim.lsp.buf.format(), '[F]ormat current buffer')
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
