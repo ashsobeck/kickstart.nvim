@@ -53,8 +53,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
+				javascript = { { "eslint_d" } },
+				typescript = { { "eslint_d" } },
 			},
 			-- Set up format-on-save
 			format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -69,5 +69,10 @@ return {
 			-- If you want the formatexpr, here is the place to set it
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 		end,
+	},
+	{
+		"aznhe21/actions-preview.nvim",
+		lazy = true,
+		event = "VeryLazy"
 	}
 }
