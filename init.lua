@@ -444,6 +444,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
+vim.filetype.add({ extension = { templ = 'templ' } })
 local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -529,8 +530,15 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
+  html = { filetypes = { 'html', 'twig', 'hbs', 'templ' } },
   svelte = {},
+  templ = { filetypes = { 'templ' } },
+  tailwindcss = {
+    filetypes = { 'templ', 'astro', 'javascript', 'typescript', 'react' },
+    init_options = {
+      userLanguages = { templ = 'html' } }
+  },
+  htmx = { filetype = { 'html', 'templ' } },
 
   lua_ls = {
     Lua = {
