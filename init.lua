@@ -570,6 +570,8 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      --
+      require('lspconfig').gleam.setup {}
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -587,6 +589,7 @@ require('lazy').setup({
         gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
+        eslint = { filetypes = { 'typescript', 'javascript' } },
         tsserver = {},
         html = { filetypes = { 'html', 'twig', 'hbs', 'templ' } },
         svelte = {},
@@ -654,9 +657,14 @@ require('lazy').setup({
         timeout_ms = 500,
         lsp_fallback = true,
       },
+      log_level = vim.log.levels.DEBUG,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
+        templ = { 'templ' },
+        typescript = { { 'eslint_d', 'prettierd', 'prettier' } },
+        typescriptreact = { { 'eslint_d', 'prettierd', 'prettier' } },
+        javascript = { { 'eslint_d', 'prettierd', 'prettier' } },
+        javascriptreact = { { 'eslint_d', 'prettierd', 'prettier' } },
         -- python = { "isort", "black" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
