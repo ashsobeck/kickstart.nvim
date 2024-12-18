@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- NOTE: This is necessary!
 -- clipboard setup necessary on wsl otherwise neovim hangs when starting up
@@ -743,6 +743,7 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      ---@diagnostic disable-next-line: missing-fields
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
@@ -754,7 +755,6 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
-        ensure_installed = ensure_installed,
         automatic_installation = false,
       }
     end,
