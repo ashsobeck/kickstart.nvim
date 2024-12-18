@@ -215,6 +215,8 @@ vim.keymap.set('n', '<leader>nt', function()
   vim.api.nvim_feedkeys('i', 't', false)
 end, { desc = 'New terminal' })
 
+vim.keymap.set('n', '<leader>cl', ':$quit<CR>', { desc = 'Close last window' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
