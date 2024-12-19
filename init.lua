@@ -184,6 +184,7 @@ vim.keymap.set('v', '<leader>x', ':lua<CR>')
 
 vim.keymap.set('n', '<leader>pv', '<cmd>Oil<CR>')
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+vim.keymap.set('n', '<leader>gp', '<cmd>Git push<CR>')
 vim.filetype.add { extension = { templ = 'templ' } }
 
 -- Clear highlights on search when pressing <Esc> in normal mode
