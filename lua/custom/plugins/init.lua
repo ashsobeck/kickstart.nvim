@@ -5,29 +5,6 @@
 return {
   { 'tpope/vim-fugitive' },
   {
-    'theprimeagen/harpoon',
-    config = function()
-      local mark = require 'harpoon.mark'
-      local ui = require 'harpoon.ui'
-
-      vim.keymap.set('n', '<leader>a', mark.add_file)
-      vim.keymap.set('n', '<C-e>', ui.toggle_quick_menu)
-
-      vim.keymap.set('n', '<M-n>', function()
-        ui.nav_file(1)
-      end)
-      vim.keymap.set('n', '<M-m>', function()
-        ui.nav_file(2)
-      end)
-      vim.keymap.set('n', '<M-,>', function()
-        ui.nav_file(3)
-      end)
-      vim.keymap.set('n', '<M-.>', function()
-        ui.nav_file(4)
-      end)
-    end,
-  },
-  {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     opts = {},
@@ -53,5 +30,38 @@ return {
     opts = {},
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  {
+    'elixir-tools/elixir-tools.nvim',
+    version = '*',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local elixir = require 'elixir'
+      local elixirls = require 'elixir.elixirls'
+
+      elixir.setup {
+        nextls = { enable = false },
+        elixirls = {
+          enable = true,
+          settings = elixirls.settings {
+            dialyzerEnabled = true,
+            fetchDeps = true,
+            enableTestLenses = true,
+            suggestSpecs = true,
+          },
+          on_attach = function(client, bufnr)
+            vim.keymap.set('n', '<space>fp', ':ElixirFromPipe<cr>', { buffer = true, noremap = true })
+            vim.keymap.set('n', '<space>tp', ':ElixirToPipe<cr>', { buffer = true, noremap = true })
+            vim.keymap.set('v', '<space>em', ':ElixirExpandMacro<cr>', { buffer = true, noremap = true })
+          end,
+        },
+        projectionist = {
+          enable = true,
+        },
+      }
+    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
   },
 }

@@ -576,6 +576,7 @@ require('lazy').setup({
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          map('K', vim.lsp.buf.hover, 'Get Documentation')
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -703,7 +704,7 @@ require('lazy').setup({
             userLanguages = { templ = 'html' },
           },
         },
-        htmx = { filetype = { 'html', 'templ' } },
+        -- htmx = { filetype = { 'html', 'templ' } },
 
         lua_ls = {
           -- cmd = { ... },
@@ -838,7 +839,9 @@ require('lazy').setup({
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
       -- see the "default configuration" section below for full documentation on how to define
       -- your own keymap.
-      keymap = { preset = 'default' },
+      keymap = {
+        preset = 'default',
+      },
 
       appearance = {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -911,7 +914,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'elixir' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
